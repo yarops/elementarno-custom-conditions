@@ -15,9 +15,16 @@
 
 ## Установка
 
-1. Скопируйте папку плагина в `/wp-content/plugins/`
-2. Установите зависимости: `composer install --no-dev`
-3. Активируйте плагин в меню "Плагины"
+### Из релиза
+
+1. Скачайте zip из [Releases](https://github.com/yarops/elementarno-custom-conditions/releases)
+2. Распакуйте в `/wp-content/plugins/`
+3. Активируйте плагин
+
+### Из исходников (для разработки)
+
+1. Клонируйте в `/wp-content/plugins/`
+2. Активируйте плагин
 
 ## Использование
 
@@ -39,4 +46,10 @@ composer check
 # Исправление ошибок.
 composer fix
 ```
+
+## Создание релиза
+
+1. Создайте тег: `git tag v1.0.0`
+2. Отправьте тег: `git push origin v1.0.0`
+3. GitHub Actions автоматически создаст релиз с готовым zip-архивом
 

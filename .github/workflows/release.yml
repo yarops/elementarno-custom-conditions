@@ -1,0 +1,49 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Create release archive
+        run: |
+          mkdir -p /tmp/release
+          rsync -av --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.vscode' \
+            --exclude='.idea' \
+            --exclude='.DS_Store' \
+            --exclude='phpcs.xml.dist' \
+            --exclude='phpstan.neon.dist' \
+            --exclude='ruleset.xml' \
+            --exclude='.github' \
+            ./ /tmp/release/elementarno-custom-conditions/
+          cd /tmp/release
+          zip -r elementarno-custom-conditions.zip elementarno-custom-conditions
+          mv elementarno-custom-conditions.zip $GITHUB_WORKSPACE/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: elementarno-custom-conditions.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

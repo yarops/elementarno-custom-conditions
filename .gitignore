@@ -27,4 +27,5 @@ composer.lock
 # Build files
 /build/
 /dist/
+*.zip
 
