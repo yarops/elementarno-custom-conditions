@@ -1,0 +1,53 @@
+{
+  "name": "yarops/elementarno-custom-conditions",
+  "description": "Elementor Custom Conditions - adds Page Template and other custom display conditions for Elementor Theme Builder",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "elementor",
+    "conditions",
+    "page-template",
+    "theme-builder"
+  ],
+  "authors": [
+    {
+      "name": "Yaroslav Popov",
+      "email": "info@codesweet.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Elementarno\\": "includes/"
+    }
+  },
+  "require": {
+    "php": "^8.2"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "require-dev": {
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "squizlabs/php_codesniffer": "^3.13",
+    "szepeviktor/phpstan-wordpress": "^2.0",
+    "wp-coding-standards/wpcs": "^3.2"
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf",
+    "phpstan": "phpstan analyse --memory-limit=1G",
+    "check": [
+      "@phpcs",
+      "@phpstan"
+    ],
+    "fix": "@phpcbf"
+  }
+}

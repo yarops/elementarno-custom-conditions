@@ -1,0 +1,22 @@
+# PHPStan configuration for Elementarno Custom Conditions.
+parameters:
+	level: 8
+	inferPrivatePropertyTypeFromConstructor: true
+	paths:
+		- elementarno-custom-conditions.php
+		- includes/
+	bootstrapFiles:
+		- vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+	scanDirectories:
+		- vendor/
+	excludePaths:
+		- vendor/
+	ignoreErrors:
+		# Elementor classes may not be loaded during analysis.
+		- '#Instantiated class ElementorPro\\Modules\\ThemeBuilder\\Classes\\Conditions_Manager not found#'
+		- '#Instantiated class ElementorPro\\Modules\\ThemeBuilder\\Conditions\\Condition_Base not found#'
+		- '#Class ElementorPro\\Modules\\ThemeBuilder\\Classes\\Conditions_Manager not found#'
+		- '#Class ElementorPro\\Modules\\ThemeBuilder\\Conditions\\Condition_Base not found#'
+		- '#Parameter \$conditions_manager of method .* has invalid type ElementorPro#'
+		- '#Elementarno\\Conditions\\PageTemplate extends unknown class ElementorPro#'
+

@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Node modules (if you add any build process later)
+node_modules/
+npm-debug.log*
+
+# Composer
+/vendor/
+composer.lock
+
+# Build files
+/build/
+/dist/
+
